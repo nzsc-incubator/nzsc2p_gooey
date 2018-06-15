@@ -1,3 +1,5 @@
+import characterListener from './characterListener';
+
 const createClickListener = (store) => (event) => {
   if (store.aOrB === null) {
     return;
@@ -9,8 +11,8 @@ const createClickListener = (store) => (event) => {
     : questions.b;
 
   switch (ownQuestion.question) {
-    case 'CHOOSE_BOOSTER':
-      //
+    case 'CHOOSE_CHARACTER':
+      characterListener(event, store, ownQuestion);
       break;
     case 'CHOOSE_BOOSTER':
       //
