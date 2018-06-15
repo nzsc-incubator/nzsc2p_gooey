@@ -4,7 +4,7 @@ import generateRoomName from './generateRoomName';
 import { canvas, correctCanvasDimensions } from './canvas';
 import * as animations from './animations';
 import nothingToCharacter from './transitions/nothingToCharacter';
-import createClickListener from './createClickListener';
+import createClickListener from './clickListeners/createClickListener';
 
 window.addEventListener('resize', () => {
   correctCanvasDimensions();
