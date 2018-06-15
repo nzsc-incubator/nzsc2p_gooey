@@ -30,7 +30,7 @@ const createTurnEndListener = (store) => async (aPayload, bPayload) => {
           : 'NEITHER';
 
       animations.characterToBooster.start({
-        previouslyAvailableCharacters: 'Ninja Zombie Samurai Clown'.split(' ') /*TODO*/,
+        previouslyAvailableCharacters: store.beforeOwnChoiceQuestion[store.aOrB.toLowerCase()].available_characters,
         availableBoosters: question[store.aOrB.toLowerCase()].available_boosters,
         ownCharacter: phase[store.aOrB.toLowerCase()].character,
         opponentCharacter: phase[opponent.toLowerCase()].character,
@@ -38,7 +38,7 @@ const createTurnEndListener = (store) => async (aPayload, bPayload) => {
       });
     } else {
       animations.characterToCharacter.start({
-        previouslyAvailableCharacters: 'Ninja Zombie Samurai Clown'.split(' ') /*TODO itik*/,
+        previouslyAvailableCharacters: store.beforeOwnChoiceQuestion[store.aOrB.toLowerCase()].available_characters,
         availableCharacters: question[store.aOrB.toLowerCase()].available_characters,
         bothCharacter: prevPhase[store.aOrB.toLowerCase()].selected_character,
       });

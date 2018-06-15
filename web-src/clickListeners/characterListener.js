@@ -16,6 +16,9 @@ const characterListener = (event, store, ownQuestion) => {
 
   const selectedCharacter = availableCharacters[rectIndex];
 
+  store.beforeOwnChoicePhase = JSON.parse(store.game.get_phase());
+  store.beforeOwnChoiceQuestion = JSON.parse(store.game.get_question());
+  
   store.game.process_choice(store.aOrB, selectedCharacter);
   clownkit.deposit(store.roomName, store.aOrB, selectedCharacter);
 
