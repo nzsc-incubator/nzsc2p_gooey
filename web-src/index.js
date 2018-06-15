@@ -1,6 +1,5 @@
-import { NZSCTwoPlayerGameWebInterface } from './wasm/nzsc2p_gooey';
 import { correctCanvasDimensions } from './canvas';
-import * as animations from './animations/index';
+import new2PGame from './new2PGame';
 
 window.addEventListener('resize', () => {
   correctCanvasDimensions();
@@ -9,4 +8,4 @@ window.addEventListener('resize', () => {
   }*/
 });
 
-animations.loading.start();
+new2PGame();
