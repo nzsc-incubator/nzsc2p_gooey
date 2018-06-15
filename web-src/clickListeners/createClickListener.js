@@ -1,4 +1,5 @@
 import characterListener from './characterListener';
+import boosterListener from './boosterListener';
 
 const createClickListener = (store) => (event) => {
   if (store.aOrB === null) {
@@ -15,7 +16,7 @@ const createClickListener = (store) => (event) => {
       characterListener(event, store, ownQuestion);
       break;
     case 'CHOOSE_BOOSTER':
-      alert('TODO Booster');
+      boosterListener(event, store, ownQuestion);
       break;
     case 'CHOOSE_MOVE':
       alert('TODO Move');
