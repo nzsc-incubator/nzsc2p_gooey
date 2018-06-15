@@ -1,6 +1,7 @@
 import { clientToLocalCoords } from '../canvas';
 import { getRectIndexAt } from '../rect';
 import * as animations from '../animations/index';
+import clownkit from '../clownkit';
 
 const characterListener = (event, store, ownQuestion) => {
   const [x, y] = clientToLocalCoords(event.clientX, event.clientY);
@@ -16,6 +17,7 @@ const characterListener = (event, store, ownQuestion) => {
   const selectedCharacter = availableCharacters[rectIndex];
 
   store.game.process_choice(store.aOrB, selectedCharacter);
+  clownkit.deposit(store.roomName, store.aOrB, selectedCharacter);
 
   animations.ownCharacterSelection.start({
     previouslyAvailableCharacters: availableCharacters,

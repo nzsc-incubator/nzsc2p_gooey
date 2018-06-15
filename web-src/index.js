@@ -5,6 +5,7 @@ import { canvas, correctCanvasDimensions } from './canvas';
 import * as animations from './animations';
 import nothingToCharacter from './transitions/nothingToCharacter';
 import createClickListener from './clickListeners/createClickListener';
+import createTurnEndListener from './createTurnEndListener';
 
 window.addEventListener('resize', () => {
   correctCanvasDimensions();
@@ -37,6 +38,8 @@ clownkit.login();
     await clownkit.join(roomName);
 
     nothingToCharacter();
+
+    clownkit.onTurnEnd(roomName, createTurnEndListener(store));
   } else {
     const roomName = generateRoomName();
 
@@ -47,5 +50,7 @@ clownkit.login();
     await clownkit.waitForRoomToBeFull(roomName);
 
     nothingToCharacter();
+
+    clownkit.onTurnEnd(roomName, createTurnEndListener(store));
   }
 })();

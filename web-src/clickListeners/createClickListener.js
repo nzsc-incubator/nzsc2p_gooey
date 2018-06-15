@@ -15,14 +15,15 @@ const createClickListener = (store) => (event) => {
       characterListener(event, store, ownQuestion);
       break;
     case 'CHOOSE_BOOSTER':
-      //
+      alert('TODO Booster');
       break;
     case 'CHOOSE_MOVE':
-      //
+      alert('TODO Move');
       break;
-    case 'NONE':
+    case null:
       break;
     default:
+      console.log(ownQuestion);
       throw new TypeError('Unexpected question type: ' + ownQuestion);
   }
 };
