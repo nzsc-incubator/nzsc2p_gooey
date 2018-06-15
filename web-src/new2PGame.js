@@ -2,6 +2,7 @@ import { NZSCTwoPlayerGameWebInterface } from './wasm/nzsc2p_gooey';
 import clownkit from './clownkit';
 import generateRoomName from './generateRoomName';
 import * as animations from './animations';
+import nothingToCharacter from './transitions/nothingToCharacter';
 
 const new2PGame = async () => {
   const store = {
@@ -22,9 +23,7 @@ const new2PGame = async () => {
 
     await clownkit.join(roomName);
 
-    animations.loading.stop();
-
-    // TODO
+    nothingToCharacter();
   } else {
     const roomName = generateRoomName();
 
@@ -34,9 +33,7 @@ const new2PGame = async () => {
     await clownkit.create(roomName);
     await clownkit.waitForRoomToBeFull(roomName);
 
-    animations.loading.stop();
-
-    // TODO
+    nothingToCharacter();
   }
 };
 
