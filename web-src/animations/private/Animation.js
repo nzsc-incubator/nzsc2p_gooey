@@ -1,4 +1,4 @@
-class Animation_ {
+class Animation {
   constructor(start) {
     this.frameId_ = null;
     this.start_ = start;
@@ -23,4 +23,4 @@ class Animation_ {
   }
 }
 
-export default Animation_;
+export default Animation;

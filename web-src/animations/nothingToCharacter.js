@@ -1,7 +1,7 @@
-import Animation_ from './Animation_';
+import Animation from './private/Animation';
 import * as frameRenderers from '../frameRenderers';
 
-const nothingToCharacter = new Animation_(({ setFrameId, done, }) => {
+const nothingToCharacter = new Animation(({ setFrameId, done, }) => {
   let last = Date.now();
   let t = 0;
   const finishTime = 500;

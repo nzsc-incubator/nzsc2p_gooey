@@ -1,10 +1,10 @@
-import Animation_ from './Animation_';
+import Animation from './private/Animation';
 import * as frameRenderers from '../frameRenderers';
 
 const TAU = 2 * Math.PI;
 const SPIN_SPEED = 0.01;
 
-const loading = new Animation_(({ setFrameId, }) => {
+const loading = new Animation(({ setFrameId, }) => {
   let then = Date.now();
   let time = 0;
 
