@@ -27,8 +27,8 @@ const createTurnEndListener = (store) => async (aPayload, bPayload) => {
   // TODO check for hacks
 
   if (prevPhase.phase === 'CHARACTER_CHOOSING') {
+    animations.ownCharacterSelection.stop();
     if (phase.phase === 'BOOSTER_CHOOSING') {
-      animations.ownCharacterSelection.stop();
       animations.characterToBooster.start({
         previouslyAvailableCharacters: 'Ninja Zombie Samurai Clown'.split(' ') /*TODO*/,
         availableBoosters: question[store.aOrB.toLowerCase()].available_boosters,
@@ -37,7 +37,11 @@ const createTurnEndListener = (store) => async (aPayload, bPayload) => {
         whoGetsTheHeadstart,
       });
     } else {
-      alert('TODO repick');
+      animations.characterToCharacter.start({
+        previouslyAvailableCharacters: 'Ninja Zombie Samurai Clown'.split(' ') /*TODO*/,
+        availableCharacters: question[store.aOrB.toLowerCase()].available_characters,
+        bothCharacter: prevPhase[store.aOrB.toLowerCase()].selected_character,
+      });
     }
   } else {
     alert('TODO ' + prevPhase.phase);
