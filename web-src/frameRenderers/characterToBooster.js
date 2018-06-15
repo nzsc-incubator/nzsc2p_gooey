@@ -12,7 +12,7 @@ const characterToBooster = ({
   availableBoosters,
   ownCharacter,
   opponentCharacter,
-  whoGetsTheHeadstart = 'NEITHER', // TODO
+  whoGetsTheHeadstart,
   completionFactor,
 }) => {
   const PHASE_LENGTHS = [0.176, 0.648, 0.176];
