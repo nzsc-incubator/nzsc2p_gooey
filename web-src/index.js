@@ -13,6 +13,8 @@ window.addEventListener('resize', () => {
   }*/
 });
 
+clownkit.login();
+
 (async () => {
   const store = {
     game: NZSCTwoPlayerGameWebInterface.new(),
