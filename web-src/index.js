@@ -1,3 +1,4 @@
 import { NZSCTwoPlayerGameWebInterface } from './wasm/nzsc2p_gooey';
+import * as animations from './animations/index';
 
-alert('Hello nzsc2p!');
+animations.loading.start();
