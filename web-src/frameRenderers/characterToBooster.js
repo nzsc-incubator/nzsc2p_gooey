@@ -107,11 +107,11 @@ const characterToBooster = ({
     }
 
     case 1: {
-      // Draw human character
       const FADE_RATE = 5;
 
+      // Draw own character
       {
-        if (whoGetsTheHeadstart === 'COMPUTER') {
+        if (whoGetsTheHeadstart === 'OPPONENT') {
           ctx.globalAlpha = lerp(1, 0, Math.min(phaseTime * FADE_RATE, 1));
         }
 
@@ -129,9 +129,9 @@ const characterToBooster = ({
         ctx.globalAlpha = 1;
       }
 
-      // Draw computer move
+      // Draw opponent move
       {
-        if (whoGetsTheHeadstart === 'HUMAN') {
+        if (whoGetsTheHeadstart === 'SELF') {
           ctx.globalAlpha = lerp(1, 0, Math.min(phaseTime * FADE_RATE, 1));
         }
 
@@ -153,8 +153,8 @@ const characterToBooster = ({
     }
 
     case 2: {
-      // Human move exits left
-      if (whoGetsTheHeadstart !== 'COMPUTER') {
+      // Own move exits left
+      if (whoGetsTheHeadstart !== 'OPPONENT') {
         const x = 200 - 800 * (phaseTime / phaseLength);
 
         ctx.fillStyle = getBackgroundColorOf(previouslyAvailableCharacterLogoMoves[ownCharacterIndex]);
@@ -163,8 +163,8 @@ const characterToBooster = ({
         ctx.drawImage(images[previouslyAvailableCharacterLogoMoves[ownCharacterIndex]], x, 200, 600, 600);
       }
 
-      // Computer move exits right
-      if (whoGetsTheHeadstart !== 'HUMAN') {
+      // Opponent move exits right
+      if (whoGetsTheHeadstart !== 'SELF') {
         const x = 1000 + 800 * (phaseTime / phaseLength);
 
         ctx.fillStyle = getBackgroundColorOf(logoOfCharacter(opponentCharacter));

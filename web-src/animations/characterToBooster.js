@@ -8,6 +8,7 @@ const characterToBooster = new Animation(({
   previouslyAvailableCharacters,
   availableBoosters,
   ownCharacter,
+  whoGetsTheHeadstart,
   opponentCharacter,
 }) => {
   let last = Date.now();
@@ -35,6 +36,7 @@ const characterToBooster = new Animation(({
       availableBoosters,
       ownCharacter,
       opponentCharacter,
+      whoGetsTheHeadstart,
       completionFactor: t / finishTime,
     });
 

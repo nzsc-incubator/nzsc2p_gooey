@@ -18,6 +18,12 @@ const createTurnEndListener = (store) => async (aPayload, bPayload) => {
   const phase = JSON.parse(store.game.get_phase());
   const question = JSON.parse(store.game.get_question());
 
+  const whoGetsTheHeadstart = phase[store.aOrB.toLowerCase()].points === 1
+    ? 'SELF'
+    : phase[opponent.toLowerCase()].points === 1
+      ? 'OPPONENT'
+      : 'NEITHER';
+
   // TODO check for hacks
 
   if (prevPhase.phase === 'CHARACTER_CHOOSING') {
@@ -28,6 +34,7 @@ const createTurnEndListener = (store) => async (aPayload, bPayload) => {
         availableBoosters: question[store.aOrB.toLowerCase()].available_boosters,
         ownCharacter: phase[store.aOrB.toLowerCase()].character,
         opponentCharacter: phase[opponent.toLowerCase()].character,
+        whoGetsTheHeadstart,
       });
     } else {
       alert('TODO repick');
