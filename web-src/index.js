@@ -1,9 +1,10 @@
 import { NZSCTwoPlayerGameWebInterface } from './wasm/nzsc2p_gooey';
 import clownkit from './clownkit';
 import generateRoomName from './generateRoomName';
-import { correctCanvasDimensions } from './canvas';
+import { canvas, correctCanvasDimensions } from './canvas';
 import * as animations from './animations';
 import nothingToCharacter from './transitions/nothingToCharacter';
+import createClickListener from './createClickListener';
 
 window.addEventListener('resize', () => {
   correctCanvasDimensions();
@@ -18,6 +19,8 @@ window.addEventListener('resize', () => {
     roomName: null,
     aOrB: null,
   };
+
+  canvas.addEventListener('click', createClickListener(store));
 
   animations.loading.start();
 
