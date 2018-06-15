@@ -81,6 +81,16 @@ get_phase() {
     wasm.__wbindgen_free(ptr, len * 1);
     return realRet;
 }
+get_question() {
+    const retptr = globalArgumentPtr();
+    wasm.nzsctwoplayergamewebinterface_get_question(retptr, this.ptr);
+    const mem = getUint32Memory();
+    const ptr = mem[retptr / 4];
+    const len = mem[retptr / 4 + 1];
+    const realRet = getStringFromWasm(ptr, len).slice();
+    wasm.__wbindgen_free(ptr, len * 1);
+    return realRet;
+}
 }
 
 export function __wbindgen_throw(ptr, len) {

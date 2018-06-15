@@ -9,7 +9,10 @@ use nzsc2p::two_player_game::{
 };
 
 extern crate nzsc2p_json_interface;
-use nzsc2p_json_interface::phase_as_json;
+use nzsc2p_json_interface::{
+    phase_as_json,
+    question_as_json,
+};
 
 //use std::str;
 //use std::str::FromStr;
@@ -41,5 +44,9 @@ impl NZSCTwoPlayerGameWebInterface {
 
     pub fn get_phase(&self) -> String {
         phase_as_json(&self.game)
+    }
+
+    pub fn get_question(&self) -> String {
+        question_as_json(&self.game)
     }
 }

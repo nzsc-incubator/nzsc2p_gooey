@@ -7,4 +7,6 @@ static  new(): NZSCTwoPlayerGameWebInterface;
 
  get_phase(): string;
 
+ get_question(): string;
+
 }
