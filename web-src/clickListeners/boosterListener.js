@@ -16,6 +16,9 @@ const boosterListener = (event, store, ownQuestion) => {
 
   const selectedBooster = availableBoosters[rectIndex];
 
+  store.beforeOwnChoicePhase = JSON.parse(store.game.get_phase());
+  store.beforeOwnChoiceQuestion = JSON.parse(store.game.get_question());
+
   store.game.process_choice(store.aOrB, selectedBooster);
   clownkit.deposit(store.roomName, store.aOrB, selectedBooster);
 
