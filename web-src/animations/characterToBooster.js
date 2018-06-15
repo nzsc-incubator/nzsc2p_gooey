@@ -8,8 +8,8 @@ const characterToBooster = new Animation(({
   previouslyAvailableCharacters,
   availableBoosters,
   ownCharacter,
-  whoGetsTheHeadstart,
   opponentCharacter,
+  whoGetsTheHeadstart,
 }) => {
   let last = Date.now();
   let t = 0;
