@@ -53,6 +53,27 @@ const createTurnEndListener = (store) => async (aPayload, bPayload) => {
       ownPoints: phase[store.aOrB.toLowerCase()].points,
       opponentPoints: phase[opponent.toLowerCase()].points,
     });
+  } else if (prevPhase.phase === 'MOVE_CHOOSING') {
+    const ownPointDiff = phase[store.aOrB.toLowerCase()].points - prevPhase[store.aOrB.toLowerCase()].points;
+    const opponentPointDiff = phase[opponent.toLowerCase()].points - prevPhase[opponent.toLowerCase()].points;
+    const whoGetsThePoint = ownPointDiff === 1
+      ? opponentPointDiff === 1
+        ? 'BOTH'
+        : 'SELF'
+      : opponentPointDiff === 1
+        ? 'OPPONENT'
+        : 'NEITHER';
+
+    animations.ownMoveSelection.stop();
+    animations.moveClash.start({
+      previouslyAvailableMoves: store.beforeOwnChoiceQuestion[store.aOrB.toLowerCase()].available_moves,
+      availableMoves: question[store.aOrB.toLowerCase()].available_moves,
+      ownMove: prevPhase[store.aOrB.toLowerCase()].selected_move,
+      opponentMove: opponentPayload,
+      whoGetsThePoint,
+      ownPoints: phase[store.aOrB.toLowerCase()].points,
+      opponentPoints: phase[opponent.toLowerCase()].points,
+    })
   } else {
     alert('TODO ' + prevPhase.phase);
   }
