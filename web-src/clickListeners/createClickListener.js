@@ -1,5 +1,6 @@
 import characterListener from './characterListener';
 import boosterListener from './boosterListener';
+import moveListener from './moveListener';
 
 const createClickListener = (store) => (event) => {
   if (store.aOrB === null) {
@@ -19,7 +20,7 @@ const createClickListener = (store) => (event) => {
       boosterListener(event, store, ownQuestion);
       break;
     case 'CHOOSE_MOVE':
-      alert('TODO Move');
+      moveListener(event, store, ownQuestion);
       break;
     case null:
       break;
