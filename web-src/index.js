@@ -14,9 +14,21 @@ window.addEventListener('resize', () => {
   }*/
 });
 
-clownkit.login();
+
 
 (async () => {
+  animations.loading.start();
+
+  await clownkit.login();
+
+  const closedRoomNames = await clownkit.listClosed();
+
+  closedRoomNames.forEach((roomName) => {
+    clownkit.destroy(roomName, 'A').catch(() => {
+      clownkit.destroy(roomName, 'B');
+    });
+  });
+
   const store = {
     game: NZSCTwoPlayerGameWebInterface.new(),
     roomName: null,
@@ -24,8 +36,6 @@ clownkit.login();
   };
 
   canvas.addEventListener('click', createClickListener(store));
-
-  animations.loading.start();
 
   const roomNames = await clownkit.list();
 
