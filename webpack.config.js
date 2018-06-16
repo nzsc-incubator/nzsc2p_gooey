@@ -1,5 +1,5 @@
 const path = require('path');
-//const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 
 module.exports = {
   entry: './web-src/load-index-async.js',
@@ -18,7 +18,6 @@ module.exports = {
       }
     ]
   },
-  /*
   plugins: [
     new SWPrecacheWebpackPlugin({
       staticFileGlobs: ['public/index.html', 'public/index.css'],
@@ -26,5 +25,4 @@ module.exports = {
       stripPrefix: 'public/'
     })
   ]
-  */
 };
