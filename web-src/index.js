@@ -11,21 +11,28 @@ window.addEventListener('resize', () => {
   }*/
 });
 
-(async () => {
-  animations.loading.start();
+if (window.navigator.onLine) {
+  (async () => {
+    animations.loading.start();
 
-  await clownkit.login();
+    await clownkit.login();
 
-  const store = {
-    game: null,
-    roomName: null,
-    aOrB: null,
-  };
+    const store = {
+      game: null,
+      roomName: null,
+      aOrB: null,
+    };
 
-  canvas.addEventListener('click', createClickListener(store));
+    canvas.addEventListener('click', createClickListener(store));
 
-  newGame(store);
-})();
+    newGame(store);
+  })();
+} else {
+  animations.waitingForNetwork.start();
+  window.addEventListener('online', () => {
+    window.location.reload();
+  });
+}
 
 if('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./service-worker.js');
