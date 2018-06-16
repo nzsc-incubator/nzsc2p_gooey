@@ -7,3 +7,4 @@ export { default as ownBoosterSelection } from './ownBoosterSelection';
 export { default as boosterToMove } from './boosterToMove';
 export { default as ownMoveSelection } from './ownMoveSelection';
 export { default as moveClash } from './moveClash';
+export { default as finalMoveClash } from './finalMoveClash';

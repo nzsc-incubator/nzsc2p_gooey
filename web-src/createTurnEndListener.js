@@ -65,15 +65,30 @@ const createTurnEndListener = (store) => async (aPayload, bPayload) => {
         : 'NEITHER';
 
     animations.ownMoveSelection.stop();
-    animations.moveClash.start({
-      previouslyAvailableMoves: store.beforeOwnChoiceQuestion[store.aOrB.toLowerCase()].available_moves,
-      availableMoves: question[store.aOrB.toLowerCase()].available_moves,
-      ownMove: prevPhase[store.aOrB.toLowerCase()].selected_move,
-      opponentMove: opponentPayload,
-      whoGetsThePoint,
-      ownPoints: phase[store.aOrB.toLowerCase()].points,
-      opponentPoints: phase[opponent.toLowerCase()].points,
-    })
+
+    if (
+      phase[store.aOrB.toLowerCase()].points < 5
+      && phase[opponent.toLowerCase()].points < 5
+    ) {
+      animations.moveClash.start({
+        previouslyAvailableMoves: store.beforeOwnChoiceQuestion[store.aOrB.toLowerCase()].available_moves,
+        availableMoves: question[store.aOrB.toLowerCase()].available_moves,
+        ownMove: prevPhase[store.aOrB.toLowerCase()].selected_move,
+        opponentMove: opponentPayload,
+        whoGetsThePoint,
+        ownPoints: phase[store.aOrB.toLowerCase()].points,
+        opponentPoints: phase[opponent.toLowerCase()].points,
+      });
+    } else {
+      animations.finalMoveClash.start({
+        previouslyAvailableMoves: store.beforeOwnChoiceQuestion[store.aOrB.toLowerCase()].available_moves,
+        ownMove: prevPhase[store.aOrB.toLowerCase()].selected_move,
+        opponentMove: opponentPayload,
+        whoGetsThePoint,
+        ownPoints: phase[store.aOrB.toLowerCase()],
+        opponentPoints: phase[opponent.toLowerCase()],
+      });
+    }
   } else {
     alert('TODO ' + prevPhase.phase);
   }
