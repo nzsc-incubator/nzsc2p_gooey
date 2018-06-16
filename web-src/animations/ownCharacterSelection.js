@@ -1,7 +1,7 @@
 import Animation from './private/Animation';
 import * as frameRenderers from '../frameRenderers/index';
 
-const ownCharacterSelection = new Animation(({ setFrameId, _done, previouslyAvailableCharacters, ownCharacter, }) => {
+const ownCharacterSelection = new Animation(({ setFrameId, previouslyAvailableCharacters, ownCharacter, }) => {
   let last = Date.now();
   let t = 0;
   const finishTime = 500;

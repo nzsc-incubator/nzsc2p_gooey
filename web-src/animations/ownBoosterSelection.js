@@ -1,7 +1,7 @@
 import Animation from './private/Animation';
 import * as frameRenderers from '../frameRenderers/index';
 
-const ownBoosterSelection = new Animation(({ setFrameId, _done, previouslyAvailableBoosters, ownBooster, }) => {
+const ownBoosterSelection = new Animation(({ setFrameId, previouslyAvailableBoosters, ownBooster, }) => {
   let last = Date.now();
   let t = 0;
   const finishTime = 500;

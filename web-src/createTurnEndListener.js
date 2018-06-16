@@ -5,7 +5,6 @@ const createTurnEndListener = (store) => async (aPayload, bPayload) => {
   await clownkit.acceptResults(store.roomName, store.aOrB);
 
   const prevPhase = JSON.parse(store.game.get_phase());
-  const prevQuestion = JSON.parse(store.game.get_question());
 
   const opponent = store.aOrB === 'A'
     ? 'B'

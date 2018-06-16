@@ -1,7 +1,7 @@
 import Animation from './private/Animation';
 import * as frameRenderers from '../frameRenderers/index';
 
-const ownMoveSelection = new Animation(({ setFrameId, _done, previouslyAvailableMoves, ownMove, ownPoints, opponentPoints, }) => {
+const ownMoveSelection = new Animation(({ setFrameId, previouslyAvailableMoves, ownMove, ownPoints, opponentPoints, }) => {
   let last = Date.now();
   let t = 0;
   const finishTime = 500;
