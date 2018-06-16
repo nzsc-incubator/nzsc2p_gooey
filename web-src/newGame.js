@@ -8,15 +8,9 @@ import createTurnEndListener from './createTurnEndListener';
 const newGame = async (store) => {
   store.game = NZSCTwoPlayerGameWebInterface.new();
 
-  const closedRoomNames = await clownkit.listClosed();
+  clownkit.cleanUp();
 
-  closedRoomNames.forEach((roomName) => {
-    clownkit.destroy(roomName, 'A').catch(() => {
-      clownkit.destroy(roomName, 'B');
-    });
-  });
-
-  const roomNames = await clownkit.list();
+  const roomNames = await clownkit.listOpen();
 
   if (roomNames.length > 0) {
     const [roomName] = roomNames;
