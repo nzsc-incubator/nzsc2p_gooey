@@ -1,12 +1,14 @@
 import characterListener from './characterListener';
 import boosterListener from './boosterListener';
 import moveListener from './moveListener';
+import playAgainListener from './playAgainListener';
 
 const createClickListener = (store) => (event) => {
   if (store.aOrB === null) {
     return;
   }
 
+  const phase = JSON.parse(store.game.get_phase());
   const questions = JSON.parse(store.game.get_question());
   const ownQuestion = store.aOrB === 'A'
     ? questions.a
@@ -23,6 +25,9 @@ const createClickListener = (store) => (event) => {
       moveListener(event, store, ownQuestion);
       break;
     case null:
+      if (phase.phase === 'GAME_OVER') {
+        playAgainListener(event, store, ownQuestion);
+      }
       break;
     default:
       console.log(ownQuestion);
